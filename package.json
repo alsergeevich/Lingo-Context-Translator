@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "private": true,
   "description": "Chrome/Yandex/Opera extension: context-aware page translation via LLM or free MT services, with PDF export.",
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=22.6"
