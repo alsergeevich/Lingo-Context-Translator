@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "Lingo Context Translator"
+  },
+  "extDescription": {
+    "message": "Context-aware page translation: an LLM via API key or free translation services. Code stays untouched. Save pages as PDF."
+  }
+}

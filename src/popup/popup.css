@@ -1,0 +1,122 @@
+/* Popup styles: compact, dark-friendly, no external fonts. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #14161d;
+  --muted: #6d7385;
+  --line: #e3e6ee;
+  --accent: #4f5bd5;
+  --accent-fg: #ffffff;
+  --warn-bg: #fff6e5;
+  --warn-fg: #8a5a00;
+  --err: #c0392b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171a26;
+    --fg: #e8eaf6;
+    --muted: #9aa3bd;
+    --line: #2a2f42;
+    --accent: #6b7cff;
+    --accent-fg: #0b0d14;
+    --warn-bg: #3a3018;
+    --warn-fg: #ffcf7a;
+    --err: #ff9b9b;
+  }
+}
+
+* { box-sizing: border-box; }
+body.popup {
+  margin: 0;
+  width: 360px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+#app { display: flex; flex-direction: column; }
+
+.head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px 10px; border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo {
+  width: 26px; height: 26px; border-radius: 8px; flex: none;
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  position: relative;
+}
+.logo::after {
+  content: ""; position: absolute; inset: 7px;
+  border-radius: 3px; background: #fff; opacity: .92;
+}
+.name { font-weight: 650; font-size: 13.5px; }
+.tagline { font-size: 11px; color: var(--muted); }
+
+.icon-btn {
+  border: 1px solid var(--line); background: transparent; color: var(--fg);
+  width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-size: 14px; line-height: 1;
+}
+.icon-btn:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+
+.body { padding: 12px 14px 6px; display: flex; flex-direction: column; gap: 12px; }
+
+.row { display: flex; gap: 8px; align-items: flex-end; }
+.row.single { flex-direction: column; align-items: stretch; gap: 6px; }
+.field { display: flex; flex-direction: column; gap: 4px; flex: 1 1 0; min-width: 0; }
+.label { font-size: 11px; color: var(--muted); }
+
+.select {
+  width: 100%; appearance: none; padding: 7px 9px; border-radius: 8px;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--fg) 4%, var(--bg));
+  color: var(--fg); font: inherit; font-size: 12.5px; cursor: pointer;
+}
+.select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.swap {
+  border: 1px solid var(--line); background: transparent; color: var(--muted);
+  border-radius: 8px; width: 30px; height: 31px; cursor: pointer; flex: none; font-size: 13px;
+}
+.swap:hover { color: var(--fg); }
+
+.warn {
+  display: flex; align-items: center; gap: 8px; justify-content: space-between;
+  background: var(--warn-bg); color: var(--warn-fg);
+  border-radius: 8px; padding: 7px 10px; font-size: 11.5px;
+}
+
+.actions { display: flex; flex-direction: column; gap: 8px; }
+button.primary {
+  border: 0; border-radius: 10px; padding: 11px 14px; cursor: pointer;
+  background: var(--accent); color: var(--accent-fg); font: inherit; font-weight: 600; font-size: 13.5px;
+}
+button.primary:hover { filter: brightness(1.06); }
+button.primary:disabled { opacity: .85; cursor: default; }
+button.primary.danger { background: #c0392b; color: #fff; }
+
+.secondary { display: flex; gap: 6px; flex-wrap: wrap; }
+button.ghost {
+  flex: 1 1 auto; min-width: 96px; border: 1px solid var(--line); background: transparent;
+  color: var(--fg); border-radius: 8px; padding: 7px 9px; cursor: pointer; font: inherit; font-size: 12px;
+}
+button.ghost:hover:not(:disabled) { background: color-mix(in srgb, var(--fg) 7%, transparent); }
+button.ghost:disabled { opacity: .45; cursor: default; }
+
+.status { min-height: 34px; display: flex; flex-direction: column; gap: 6px; }
+.muted { font-size: 11.5px; color: var(--muted); }
+.error { font-size: 11.5px; color: var(--err); }
+.bar { height: 4px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); transition: width .3s ease; }
+
+.notice { padding: 10px 2px; }
+.notice-title { font-weight: 600; margin-bottom: 3px; }
+.notice-sub { font-size: 11.5px; color: var(--muted); }
+
+.foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 14px 11px; border-top: 1px solid var(--line);
+}
+.link {
+  border: 0; background: transparent; color: var(--accent); cursor: pointer;
+  font: inherit; font-size: 11.5px; padding: 0; text-decoration: underline; text-underline-offset: 2px;
+}
+.ver { font-size: 10.5px; color: var(--muted); }

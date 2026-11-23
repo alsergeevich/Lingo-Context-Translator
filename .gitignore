@@ -1,0 +1,13 @@
+node_modules/
+dist/
+release/
+.tmp-tests/
+.tmp-e2e/
+.npm-cache/
+*.zip
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+coverage/
